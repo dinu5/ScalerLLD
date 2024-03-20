@@ -12,10 +12,13 @@ public class Client {
 //        builder.setCollegeName("Scaler");
 //        Student student1 = new Student(builder);
 
-        StudentBuilder builder = Student.getBuilder();
-        Student student = builder.setName("Dino").setAge(26)
-                        .setEmail("ishita@gmail.com")
-                                .setPhone("99999").build();
+        Student.StudentBuilder builder = Student.getBuilder();
+        Student student = builder.setName("Dino")
+                                 .setAge(26)
+                                 .setEmail("ishita@gmail.com")
+                                 .setPhone("99999")
+                                 .setCollegeName("BB College")
+                                 .build();
 
         System.out.println("DEBUG POINT");
     }
