@@ -34,27 +34,39 @@ public class StudentBuilder {
     String collegeName;
 
 
-    public void setName(String name) {
+    public StudentBuilder setName(String name) {
         this.name = name;
+        return this;
     }
 
-    public void setAge(int age) {
+    public StudentBuilder setAge(int age) {
         this.age = age;
+        return this;
     }
 
-    public void setPhone(String phone) {
+    public StudentBuilder setPhone(String phone) {
         this.phone = phone;
+        return this;
     }
 
-    public void setEmail(String email) {
+    public StudentBuilder setEmail(String email) {
         this.email = email;
+        return this;
     }
 
-    public void setRollNumber(int rollNumber) {
+    public StudentBuilder setRollNumber(int rollNumber) {
         this.rollNumber = rollNumber;
+        return this;
     }
 
-    public void setCollegeName(String collegeName) {
+    public StudentBuilder setCollegeName(String collegeName) {
         this.collegeName = collegeName;
+        return this;
+    }
+    public Student build(){
+        if(this.getAge()<25){
+            throw new RuntimeException("Kids are not allowed");
+        }
+        return new Student(this);
     }
 }

@@ -9,13 +9,15 @@ public class Student {
     String collegeName;
 
     private Student(){};
+
+    public static StudentBuilder getBuilder(){
+        return new StudentBuilder();
+    }
     public Student(StudentBuilder builder){
-        if(builder.getAge()<25){
-            throw new RuntimeException("Kids are not allowed");
-        }
         this.name = builder.getName();
         this.age = builder.getAge();
         this.phone = builder.getPhone();
         this.email = builder.getEmail();
     }
+
 }
