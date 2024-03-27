@@ -13,7 +13,7 @@ public class Student {
     public static StudentBuilder getBuilder(){
         return new StudentBuilder();
     }
-    public Student(StudentBuilder builder){
+    private Student(StudentBuilder builder){
         this.name = builder.getName();
         this.age = builder.getAge();
         this.phone = builder.getPhone();
