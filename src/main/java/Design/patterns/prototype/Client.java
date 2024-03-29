@@ -7,12 +7,12 @@ public class Client {
 
         Student Ayushee = prototypeRegistry.get("March Batch").clone();
         Ayushee.setName("Ayushee Shaw");
-        Ayushee.setEmail("ayusheeshaw.gmail.com");
+        Ayushee.setEmail("ayusheeshaw@gmail.com");
         Ayushee.setPhone("9932790074");
 
         Student dino = prototypeRegistry.get("March Batch").clone();
         dino.setName("Dino Chakraborty");
-        dino.setEmail("dino.gmail.com");
+        dino.setEmail("dino@gmail.com");
         dino.setPhone("9932790074");
 
         Student ishita = prototypeRegistry.get("Intelligent Batch").clone();
