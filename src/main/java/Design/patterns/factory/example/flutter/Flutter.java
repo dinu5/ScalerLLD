@@ -1,12 +1,12 @@
 package Design.patterns.factory.example.flutter;
 
 public class Flutter {
-    public UIFactory getPlatform(String platform){
-        switch(platform){
-            case "ANDROID" :
-                return new AndroidUI();
-            case "IOS" :
-                return new IOSUI();
+    public UIFactory getPlatform(SupportedPlatforms platform){
+        if(platform.equals(SupportedPlatforms.ANDROID)) {
+            return new AndroidUI();
+        }
+        else if(platform.equals(SupportedPlatforms.IOS)){
+            return new IOSUI();
         }
         return null;
     }

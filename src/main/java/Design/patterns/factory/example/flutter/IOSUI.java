@@ -8,6 +8,6 @@ public class IOSUI implements UIFactory {
 
     @Override
     public Menu createMenu() {
-        return null;
+        return new IOSMenu();
     }
 }

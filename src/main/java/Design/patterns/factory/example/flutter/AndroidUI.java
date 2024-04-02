@@ -8,6 +8,6 @@ public class AndroidUI implements UIFactory {
 
     @Override
     public Menu createMenu() {
-        return null;
+        return new AndroidMenu();
     }
 }
