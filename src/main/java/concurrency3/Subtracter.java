@@ -13,9 +13,9 @@ public class Subtracter implements Runnable{
     @Override
     public void run() {
         for(int i=0;i<=10000000;i++){
-            lock.lock();
-            count.value--;
-            lock.unlock();
+            synchronized (count) {
+                count.value--;
+            }
         }
     }
 }
