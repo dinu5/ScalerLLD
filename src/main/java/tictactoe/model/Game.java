@@ -12,6 +12,15 @@ public class Game {
     private GameState gameState;
     private int nextMovePlayerIndex;
     private List<WinningStrategies> winningStrategies;
+    private Player winner;
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        this.winner = winner;
+    }
 
     public Game(int dimension, List<Player> players, List<WinningStrategies> winningStrategies) {
         this.board = new Board(dimension);
@@ -20,7 +29,7 @@ public class Game {
         this.gameState = GameState.IN_PROGRESS;
         this.moves = new ArrayList<>();
         this.winningStrategies = winningStrategies;
-        System.out.println("Game class Constructor is getting called");
+
     }
 
     public static Builder getBuilder(){
@@ -28,7 +37,7 @@ public class Game {
     }
 
     public void printBoard(){
-        System.out.println("Game class is getting called");
+
         board.printBoard();
     }
     public GameState getGameState() {
@@ -81,7 +90,7 @@ public class Game {
     public void makeMove() {
         Player currentPlayer = players.get(nextMovePlayerIndex);
         System.out.println("It's "+currentPlayer.getName()+"'s turn");
-        Move move = currentPlayer.makeMove();
+        Move move = currentPlayer.makeMove(board);
         if(!validate(move)){
             System.out.println("Invalid move");
             throw new RuntimeException("invalid move");
@@ -91,11 +100,15 @@ public class Game {
         Cell cell = board.getBoard().get(row).get(col);
         cell.setCellState(CellState.FILLED);
         cell.setPlayer(players.get(nextMovePlayerIndex));
-        nextMovePlayerIndex = (nextMovePlayerIndex + 1)% board.getDimension();
+        nextMovePlayerIndex = (nextMovePlayerIndex + 1) % players.size();
         Move finalMove = new Move(currentPlayer,cell);
         moves.add(finalMove);
         if(checkWinner(move)){
-            System.out.println("Winner is "+currentPlayer.getName());
+            winner = currentPlayer;
+            gameState = GameState.COMPLETED;
+
+        }else if(moves.size()==board.getDimension()*board.getDimension()){
+            gameState = GameState.DRAW;
         }
     }
 

@@ -17,8 +17,8 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         int dimension = 4;
         //Symbol symbol = new Symbol();
-        Player ayushee = new Player("ayushee",new Symbol('0'), PlayerType.HUMAN);
-        Player bot = new Player("bot",new Symbol('0'), PlayerType.HUMAN);
+        Player ayushee = new Player("Dino",new Symbol('0'), PlayerType.HUMAN);
+        Player bot = new Bot("bot",new Symbol('X'), PlayerType.BOT,BotDifficultyLevel.EASY);
         List<Player> players = new ArrayList<>();
         players.add(ayushee);
         players.add(bot);
@@ -33,7 +33,16 @@ public class Client {
         // Let's play!!
         while(gameController.getGameState(game).equals(GameState.IN_PROGRESS)){
             gameController.printBoard(game);
+
+            //undo function needs to implements
+
             gameController.makeMove(game);
+        }
+        gameController.printBoard(game);
+        if(game.getGameState().equals(GameState.COMPLETED)){
+            System.out.println(game.getWinner().getName()+" is the Winner!!!!!");
+        }else if(game.getGameState().equals(GameState.DRAW)){
+            System.out.println("The game is drawn!!!!!");
         }
     }
 }

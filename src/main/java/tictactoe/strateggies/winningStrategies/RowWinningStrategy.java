@@ -10,6 +10,7 @@ public class RowWinningStrategy implements WinningStrategies{
     static Map<Integer, Map<Character,Integer>> map = new HashMap<>();
     @Override
     public boolean checkWinner(Board board, Move move) {
+//        System.out.println("Row check winner strategy is getting callled");
         int row = move.getCell().getRow();
         int dimension = board.getDimension();
         char symbol = move.getPlayer().getSymbol().getaChar();
@@ -19,9 +20,10 @@ public class RowWinningStrategy implements WinningStrategies{
         Map<Character,Integer> currRow = map.get(row);
         if(!currRow.containsKey(symbol)){
             currRow.put(symbol,0);
-        }else{
-            currRow.put(symbol,currRow.get(symbol)+1);
         }
-        return currRow.get(symbol)==dimension;
+        currRow.put(symbol,currRow.get(symbol)+1);
+
+        map.put(row,currRow);
+        return currRow.get(symbol).equals(board.getDimension());
     }
 }

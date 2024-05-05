@@ -11,6 +11,7 @@ public class DiagonalWinningStrategy implements WinningStrategies{
     static Map<Character,Integer> rightDiaMap = new HashMap();
     @Override
     public boolean checkWinner(Board board, Move move) {
+        System.out.println("Diagonal check winner strategy is getting callled");
         int row = move.getCell().getRow();
         int col = move.getCell().getCol();
         char symbol = move.getPlayer().getSymbol().getaChar();

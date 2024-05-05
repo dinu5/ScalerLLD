@@ -38,7 +38,7 @@ public class Player {
         this.playerType = playerType;
     }
 
-    public Move makeMove() {
+    public Move makeMove(Board board) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("please enter row");
         int row = scanner.nextInt();
